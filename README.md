@@ -1,19 +1,14 @@
-## react-native-cookies
+## react-native-cookie-store
 
 Cookie manager for react native.
 
-[![npm version](https://badge.fury.io/js/react-native-cookies.svg)](https://badge.fury.io/js/react-native-cookies)
-[![npm downloads](https://img.shields.io/npm/dm/react-native-cookies.svg)](https://www.npmjs.com/package/react-native-cookies)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/joeferraro/react-native-cookies/master/LICENSE.md)
-
-### Looking for Maintainers
-
-I no longer use this library and I'm looking for maintainer(s) to take full control over the development and release cycle.
+[![npm version](https://badge.fury.io/js/react-native-cookie-store.svg)](https://badge.fury.io/js/react-native-cookie-store)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/safaiyeh/react-native-cookie-store/master/LICENSE.md)
 
 ### Installation
 
 ```
-yarn add react-native-cookies
+yarn add react-native-cookie-store
 ```
 
 ### Linking
@@ -21,7 +16,7 @@ yarn add react-native-cookies
 #### Automatic (recommended)
 
 ```
-react-native link react-native-cookies
+react-native link react-native-cookie-store
 ```
 
 #### Manual
