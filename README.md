@@ -26,7 +26,7 @@ If automatic linking does not work, you can manually link this library by follow
 ##### iOS
 
 1. Open your project in Xcode, right click on `Libraries` and click `Add
-   Files to "Your Project Name"` Look under `node_modules/react-native-cookies/ios` and add `RNCookieManagerIOS.xcodeproj`.
+   Files to "Your Project Name"` Look under `node_modules/react-native-cookie-store/ios` and add `RNCookieManagerIOS.xcodeproj`.
 2. Add `libRNCookieManagerIOS.a` to `Build Phases -> Link Binary With Libraries.
 3. Clean and rebuild your project
 
@@ -39,8 +39,8 @@ Or if you have trouble, make the following additions to the given files manually
 **android/settings.gradle**
 
 ```gradle
-include ':react-native-cookies'
-project(':react-native-cookies').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-cookies/android')
+include ':react-native-cookie-store'
+project(':react-native-cookie-store').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-cookie-store/android')
 ```
 
 **android/app/build.gradle**
@@ -48,7 +48,7 @@ project(':react-native-cookies').projectDir = new File(rootProject.projectDir, '
 ```gradle
 dependencies {
    ...
-   compile project(':react-native-cookies')
+   compile project(':react-native-cookie-store')
 }
 ```
 
@@ -77,7 +77,7 @@ protected List<ReactPackage> getPackages() {
 ### Usage
 
 ```javascript
-import CookieManager from 'react-native-cookies';
+import CookieManager from 'react-native-cookie-store';
 
 // set a cookie (IOS ONLY)
 CookieManager.set({
@@ -147,7 +147,7 @@ To use this _CookieManager_ with WebKit-Support we extended the interface with t
 
 ##### Usage
 ```javascript
-import CookieManager from 'react-native-cookies';
+import CookieManager from 'react-native-cookie-store';
 
 const useWebKit = true;
 
