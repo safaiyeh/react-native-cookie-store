@@ -9,10 +9,10 @@ Pod::Spec.new do |s|
   s.description         = <<-DESC
                             Cookie Manager for React Native
                          DESC
-  s.homepage            = "https://github.com/joeferraro/react-native-cookies"
+  s.homepage            = "https://github.com/safaiyeh/react-native-cookie-store"
   s.license             = package['license']
-  s.author              = "joeferraro"
-  s.source              = { :git => "git@github.com:joeferraro/react-native-cookies.git", :tag => "v#{s.version}" }
+  s.author              = "safaiyeh"
+  s.source              = { :git => "git@github.com:safaiyeh/react-native-cookie-store.git", :tag => "v#{s.version}" }
   s.requires_arc        = true
   s.platform            = :ios, "7.0"
   s.preserve_paths      = "*.framework"
