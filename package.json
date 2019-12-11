@@ -1,5 +1,5 @@
 {
-    "name": "react-native-cookies",
+    "name": "react-native-cookie-store",
     "version": "3.3.0",
     "description": "Cookie manager for react native",
     "keywords": [
@@ -11,7 +11,6 @@
         "react-native"
     ],
     "main": "index.js",
-    "author": "@joeferraro",
     "license": "MIT",
     "dependencies": {
         "invariant": "^2.1.0"
