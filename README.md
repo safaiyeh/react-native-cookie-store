@@ -11,7 +11,8 @@ Cookie manager for react native.
 yarn add react-native-cookie-store
 ```
 
-### Linking
+
+### Setup (React Native < 0.60.0)
 
 #### Automatic (recommended)
 
