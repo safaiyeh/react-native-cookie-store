@@ -8,8 +8,17 @@ jobs:
     - run:
         name: Install dependencies
         command: yarn --pure-lockfile
+  
+  test:
+  - run:
+      name: Lint check
+      command: yarn lint
+
 workflows:
   version: 2
   workflow:
     jobs:
-    - build
+      - build
+      - test:
+        - requires:
+          - build
