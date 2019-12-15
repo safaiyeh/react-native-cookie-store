@@ -5,11 +5,37 @@ jobs:
     - image: circleci/node:12.9.1-browsers
     steps:
     - checkout
+    - restore_cache:
+          name: Restore node modules
+          keys:
+            - node_modules-{{ arch }}-{{ checksum "yarn.lock" }}
     - run:
         name: Install dependencies
         command: yarn --pure-lockfile
+    - save_cache:
+          name: Save node modules
+          key: node_modules-{{ arch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+
+  test:
+    docker:
+    - image: circleci/node:12.9.1-browsers
+    steps:
+    - checkout
+    - restore_cache:
+          name: Restore node modules
+          keys:
+            - node_modules-{{ arch }}-{{ checksum "yarn.lock" }}
+    - run:
+        name: Run Linter Check
+        command: yarn lint
+
 workflows:
   version: 2
-  workflow:
+  ci:
     jobs:
     - build
+    - test:
+        requires:
+        - build
