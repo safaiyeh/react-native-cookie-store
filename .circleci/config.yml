@@ -10,9 +10,12 @@ jobs:
         command: yarn --pure-lockfile
   
   test:
-  - run:
-      name: Lint check
-      command: yarn lint
+    docker:
+    - image: circleci/node:12.9.1-browsers
+    steps:
+    - run:
+        name: Lint check
+        command: yarn lint
 
 workflows:
   version: 2
