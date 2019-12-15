@@ -14,8 +14,8 @@ jobs:
     steps:
     - checkout
     - run:
-        name: Run Tests
-        command: yarn ci
+        name: Run Linter Check
+        command: yarn lint
 
 workflows:
   version: 2
