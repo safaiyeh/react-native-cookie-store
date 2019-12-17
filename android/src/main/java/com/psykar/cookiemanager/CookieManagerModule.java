@@ -36,19 +36,16 @@ public class CookieManagerModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void set(ReadableMap cookie, boolean useWebKit, final Promise promise) throws Exception {
         try {
-            ReadableMapKeySetIterator iterator = cookie.keySetIterator();
-            List cookiesList = new ArrayList();
-            while (iterator.hasNextKey()) {
-                String key = iterator.nextKey();
-                String value = cookie.getString(key);
-                String cookieString = key + "=" + value;
-                cookiesList.add(cookieString);
-            }
-            Map headers = new HashMap<String, List<String>>();
-            headers.put("Set-Cookie", cookiesList);
-            URI uri = new URI(cookie.getString("origin"));
-            this.cookieHandler.put(uri, headers);
-            promise.resolve(true);
+            StringBuilder cookieString = new StringBuilder();
+            cookieString.append(cookie.getString("name"));
+            cookieString.append("=");
+            cookieString.append(cookie.getString("value"));
+            cookieString.append(";");
+
+            CookieManager cookieManager = CookieManager.getInstance();
+            cookieManager.setCookie(cookie.getString("domain"), cookieString.toString());
+            cookieManager.flush();
+            promise.resolve(cookieString.toString());
         } catch (Exception e) {
             promise.resolve(false);
         }
