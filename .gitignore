@@ -6,3 +6,12 @@ RNCookieManagerIOS.xcodeproj/xcuserdata/josephferraro.xcuserdatad/xcschemes/RNCo
 RNCookieManagerIOS.xcodeproj/xcuserdata/josephferraro.xcuserdatad/xcschemes/xcschememanagement.plist
 
 node_modules/
+
+## Android Studio
+android/.gradle/
+android/.idea/
+android/build/
+android/gradle/
+android/gradlew*
+android/local.properties
+*iml
