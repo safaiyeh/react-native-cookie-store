@@ -192,6 +192,5 @@ CookieManager.set(newCookie, useWebKit)
 
 - Proper `getAll` dictionary by domain
 - Proper error handling
-- Anything else?
 
 PR's welcome!
