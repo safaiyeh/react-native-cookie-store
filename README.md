@@ -111,7 +111,8 @@ CookieManager.get('http://example.com')
   });
 
 // list cookies (IOS ONLY)
-CookieManager.getAll()
+// useWebKit: boolean
+CookieManager.getAll(useWebKit)
   .then((res) => {
     console.log('CookieManager.getAll =>', res);
   });
