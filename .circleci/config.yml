@@ -31,6 +31,19 @@ jobs:
         name: Run Linter Check
         command: yarn lint
 
+  release:
+    docker:
+    - image: circleci/node:12.9.1-browsers
+    steps:
+    - checkout
+    - restore_cache:
+          name: Restore node modules
+          keys:
+            - node_modules-{{ arch }}-{{ checksum "yarn.lock" }}
+    - run:
+          name: Publish to NPM
+          command: yarn semantic-release || true
+
 workflows:
   version: 2
   ci:
@@ -39,3 +52,9 @@ workflows:
     - test:
         requires:
         - build
+    - release:
+        requires:
+        - test
+        filters:
+            branches:
+              only: master

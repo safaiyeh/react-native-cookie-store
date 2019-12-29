@@ -1,25 +1,32 @@
 {
-    "name": "react-native-cookie-store",
-    "version": "3.3.2",
-    "description": "Cookie manager for react native",
-    "keywords": [
-        "react",
-        "react native",
-        "react-component",
-        "cookies",
-        "webview",
-        "react-native"
-    ],
-    "main": "index.js",
-    "license": "MIT",
-    "scripts": {
-        "lint": "eslint index.js"
-    },
-    "dependencies": {
-        "invariant": "^2.1.0"
-    },
-    "devDependencies": {
-        "@react-native-community/eslint-config": "^0.0.5",
-        "eslint": "^6.7.2"
-    }
+  "name": "react-native-cookie-store",
+  "version": "3.3.2",
+  "description": "Cookie manager for react native",
+  "keywords": [
+    "react",
+    "react native",
+    "react-component",
+    "cookies",
+    "webview",
+    "react-native"
+  ],
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint index.js",
+    "semantic-release": "semantic-release"
+  },
+  "dependencies": {
+    "invariant": "^2.1.0"
+  },
+  "devDependencies": {
+    "@react-native-community/eslint-config": "^0.0.5",
+    "@semantic-release/git": "^7.0.18",
+    "eslint": "^6.7.2",
+    "semantic-release": "^15.14.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/safaiyeh/react-native-cookie-store.git"
+  }
 }
