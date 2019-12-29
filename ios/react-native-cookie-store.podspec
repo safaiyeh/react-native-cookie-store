@@ -5,7 +5,7 @@ package = JSON.parse(File.read(File.join(__dir__, '../package.json')))
 Pod::Spec.new do |s|
   s.name                = package['name']
   s.version             = package['version']
-  s.description         = package['description']
+  s.summary             = package['description']
   s.homepage            = "https://github.com/safaiyeh/react-native-cookie-store"
   s.license             = package['license']
   s.author              = "safaiyeh"
