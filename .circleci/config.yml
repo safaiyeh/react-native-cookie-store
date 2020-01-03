@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  react-native: react-native-community/react-native@1.3.0
+  rn: react-native-community/react-native@1.3.0
 
 jobs:
   checkout_code:
@@ -31,7 +31,6 @@ jobs:
           command: yarn semantic-release || true
 
 workflows:
-  version: 2.1
   test:
     jobs:
     - checkout_code
