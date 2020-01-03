@@ -34,13 +34,13 @@ workflows:
   version: 2.1
   test:
     jobs:
-      - checkout_code
-      - analyse_js:
-          requires:
-            - checkout_code
-      - release:
-          requires:
-            - analyse_js
+    - checkout_code
+    - analyse_js:
+        requires:
+        - checkout_code
+    - release:
+        requires:
+        - analyse_js
         filters:
             branches:
               only: master
