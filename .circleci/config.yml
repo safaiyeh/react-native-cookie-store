@@ -32,7 +32,7 @@ jobs:
             command: yarn semantic-release || true
 
 workflows:
-  test:
+  ci:
     jobs:
     - checkout_code
     - analyse_js:
