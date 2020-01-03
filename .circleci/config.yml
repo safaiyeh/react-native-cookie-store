@@ -1,60 +1,46 @@
-version: 2
-jobs:
-  build:
-    docker:
-    - image: circleci/node:12.9.1-browsers
-    steps:
-    - checkout
-    - restore_cache:
-          name: Restore node modules
-          keys:
-            - node_modules-{{ arch }}-{{ checksum "yarn.lock" }}
-    - run:
-        name: Install dependencies
-        command: yarn --pure-lockfile
-    - save_cache:
-          name: Save node modules
-          key: node_modules-{{ arch }}-{{ checksum "yarn.lock" }}
-          paths:
-            - node_modules
+version: 2.1
+orbs:
+  rn: react-native-community/react-native@1.3.0
 
-  test:
-    docker:
-    - image: circleci/node:12.9.1-browsers
+jobs:
+  checkout_code:
+    executor: rn/linux_js
     steps:
-    - checkout
-    - restore_cache:
-          name: Restore node modules
-          keys:
-            - node_modules-{{ arch }}-{{ checksum "yarn.lock" }}
-    - run:
-        name: Run Linter Check
-        command: yarn lint
+      - checkout
+      - persist_to_workspace:
+          root: .
+          paths: .
+
+  analyse_js:
+    executor: rn/linux_js
+    steps:
+      - attach_workspace:
+          at: .
+      - rn/yarn_install
+      - run:
+          name: Run ESLint
+          command: yarn lint
 
   release:
-    docker:
-    - image: circleci/node:12.9.1-browsers
+    executor: rn/linux_js
     steps:
-    - checkout
-    - restore_cache:
-          name: Restore node modules
-          keys:
-            - node_modules-{{ arch }}-{{ checksum "yarn.lock" }}
-    - run:
-          name: Publish to NPM
-          command: yarn semantic-release || true
+      - attach_workspace:
+          at: .
+      - rn/yarn_install
+      - run:
+            name: Publish to NPM
+            command: yarn semantic-release || true
 
 workflows:
-  version: 2
   ci:
     jobs:
-    - build
-    - test:
+    - checkout_code
+    - analyse_js:
         requires:
-        - build
+        - checkout_code
     - release:
         requires:
-        - test
+        - analyse_js
         filters:
             branches:
               only: master
