@@ -22,13 +22,14 @@ jobs:
           command: yarn lint
 
   release:
-    docker:
-    - image: circleci/node:12.9.1-browsers
+    executor: rn/linux_js
     steps:
-    - checkout
-    - run:
-          name: Publish to NPM
-          command: yarn semantic-release || true
+      - attach_workspace:
+          at: .
+      - rn/yarn_install
+      - run:
+            name: Publish to NPM
+            command: yarn semantic-release || true
 
 workflows:
   test:
