@@ -35,6 +35,7 @@ jobs:
           command: yarn semantic-release || true
 
 workflows:
+  version: 2.1
   ci:
     jobs:
     - checkout_code
