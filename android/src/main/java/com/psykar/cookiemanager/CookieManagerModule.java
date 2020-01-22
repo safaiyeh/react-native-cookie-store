@@ -5,6 +5,7 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.WritableMap;
@@ -15,6 +16,7 @@ import java.net.URISyntaxException;
 import java.net.URI;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +35,20 @@ public class CookieManagerModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void set(ReadableMap cookie, boolean useWebKit, final Promise promise) throws Exception {
-        throw new Exception("Cannot call on android, try setFromResponse");
+        try {
+            StringBuilder cookieString = new StringBuilder();
+            cookieString.append(cookie.getString("name"));
+            cookieString.append("=");
+            cookieString.append(cookie.getString("value"));
+            cookieString.append(";");
+
+            CookieManager cookieManager = CookieManager.getInstance();
+            cookieManager.setCookie(cookie.getString("domain"), cookieString.toString());
+            cookieManager.flush();
+            promise.resolve(cookieString.toString());
+        } catch (Exception e) {
+            promise.resolve(false);
+        }
     }
 
     @ReactMethod
